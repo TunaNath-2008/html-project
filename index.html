@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FitZone | Fitness Membership</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+
+    <nav class="navbar-custom">
+
+        <a href="index.html" class="logo">
+            FIT<span>ZONE</span>
+        </a>
+
+        <ul class="nav-links mb-0">
+
+            <li>
+                <a href="#home" class="active">Home</a>
+            </li>
+
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#plans">Membership Plans</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
+            <li>
+                <a href="login.html" class="btn-custom">
+                    Login / Register
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ========== HERO SECTION ========== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <span class="hero-tag">
+                YOUR FITNESS JOURNEY STARTS HERE
+            </span>
+
+            <h1>
+                BUILD YOUR<br>
+                <span>STRONGER SELF.</span>
+            </h1>
+
+            <p>
+                Train with purpose, build healthy habits, and become
+                stronger every day. Find a membership plan that fits
+                your goals and your lifestyle.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#plans" class="btn-custom">
+                    Explore Memberships
+                </a>
+
+                <a href="#about" class="btn-outline">
+                    Discover FitZone
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========== ABOUT SECTION ========== -->
+
+    <section class="section" id="about">
+
+        <div class="container-custom">
+
+            <div class="about-grid">
+
+                <div class="about-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1000&q=80"
+                        alt="Modern gym with fitness equipment"
+                    >
+
+                </div>
+
+                <div class="about-content">
+
+                    <span class="hero-tag">
+                        ABOUT FITZONE
+                    </span>
+
+                    <h2>
+                        Fitness That Fits Your Life
+                    </h2>
+
+                    <p>
+                        FitZone is designed to help members work toward
+                        their fitness goals in a supportive environment.
+                        Whether you're starting your fitness journey or
+                        maintaining an established routine, we make
+                        membership management simple.
+                    </p>
+
+                    <ul class="feature-list">
+
+                        <li>Flexible membership options</li>
+
+                        <li>Simple membership tracking</li>
+
+                        <li>Easy online membership registration</li>
+
+                        <li>Convenient renewal and payment history</li>
+
+                    </ul>
+
+                    <a href="login.html" class="btn-custom">
+                        Become a Member
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========== MEMBERSHIP PLANS ========== -->
+
+    <section class="section" id="plans">
+
+        <div class="container-custom">
+
+            <span class="hero-tag d-block mx-auto text-center"
+                style="width: fit-content;">
+                MEMBERSHIP OPTIONS
+            </span>
+
+            <h2 class="section-title">
+                Choose Your Plan
+            </h2>
+
+            <p class="section-subtitle">
+                Find a membership that suits your schedule and goals.
+                Your next step starts here.
+            </p>
+
+            <!-- Plans will be inserted by JavaScript -->
+
+            <div class="plans-grid" id="plansContainer">
+
+                <p class="text-center text-light">
+                    Loading membership plans...
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========== CONTACT SECTION ========== -->
+
+    <section class="section" id="contact">
+
+        <div class="container-custom">
+
+            <h2 class="section-title">
+                Get In Touch
+            </h2>
+
+            <p class="section-subtitle">
+                Have questions about membership? Send us a message.
+            </p>
+
+            <div class="contact-wrapper">
+
+                <div class="contact-info">
+
+                    <h3>Let's Talk Fitness</h3>
+
+                    <p>
+                        Need help choosing a plan? Contact our team
+                        and we'll help you understand your options.
+                    </p>
+
+                    <p>
+                        <strong>Email:</strong><br>
+                        support@fitzone.example
+                    </p>
+
+                    <p>
+                        <strong>Phone:</strong><br>
+                        +91 98765 43210
+                    </p>
+
+                    <p>
+                        <strong>Hours:</strong><br>
+                        Monday - Saturday, 6 AM - 10 PM
+                    </p>
+
+                </div>
+
+                <form id="contactForm">
+
+                    <div class="form-group">
+
+                        <label for="contactName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="contactName"
+                            class="form-control"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="contactEmail">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="contactEmail"
+                            class="form-control"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="contactMessage">
+                            Message
+                        </label>
+
+                        <textarea
+                            id="contactMessage"
+                            class="form-control"
+                            placeholder="Write your message..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+                    <button type="submit" class="btn-custom">
+                        Send Message
+                    </button>
+
+                    <p
+                        id="contactFeedback"
+                        class="auth-message"
+                        aria-live="polite"
+                    ></p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========== FOOTER ========== -->
+
+    <footer class="footer">
+
+        <div class="footer-grid">
+
+            <div>
+
+                <a href="index.html" class="logo">
+                    FIT<span>ZONE</span>
+                </a>
+
+                <p class="mt-3">
+                    A simpler way to manage your fitness membership
+                    and keep moving toward your goals.
+                </p>
+
+            </div>
+
+            <div>
+
+                <h4>Quick Links</h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#home">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#about">About Us</a>
+                    </li>
+
+                    <li>
+                        <a href="#plans">Membership Plans</a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div>
+
+                <h4>Member Area</h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="login.html">Login</a>
+                    </li>
+
+                    <li>
+                        <a href="login.html">Register</a>
+                    </li>
+
+                    <li>
+                        <a href="dashboard.html">Dashboard</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; <span id="currentYear"></span>
+                FitZone Fitness Membership.
+                All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ========== JAVASCRIPT ========== -->
+
+    <!-- Shared storage functions -->
+    <script src="js/storage.js"></script>
+
+    <!-- Home page functionality -->
+    <script>
+
+        // Display the current year in the footer.
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+
+        // Display membership plans stored in localStorage.
+        function displayPlans() {
+
+            const plans = getPlans();
+
+            const container =
+                document.getElementById("plansContainer");
+
+            container.innerHTML = "";
+
+            if (plans.length === 0) {
+
+                container.innerHTML = `
+                    <p class="text-center">
+                        No membership plans are available right now.
+                    </p>
+                `;
+
+                return;
+            }
+
+            plans.forEach(function (plan, index) {
+
+                const features = Array.isArray(plan.features)
+                    ? plan.features
+                    : [];
+
+                const featureHTML = features.map(function (feature) {
+
+                    return `<li>${escapeHTML(feature)}</li>`;
+
+                }).join("");
+
+                const card = document.createElement("div");
+
+                card.className = "plan-card";
+
+                if (index === 1) {
+                    card.classList.add("featured");
+                }
+
+                card.innerHTML = `
+
+                    <h3>${escapeHTML(plan.name)}</h3>
+
+                    <p class="plan-price">
+                        ₹${Number(plan.price).toLocaleString("en-IN")}
+                    </p>
+
+                    <p class="plan-duration">
+                        ${Number(plan.durationMonths)} month(s)
+                    </p>
+
+                    <ul class="plan-features">
+                        ${featureHTML}
+                    </ul>
+
+                    <a
+                        href="login.html"
+                        class="btn-custom w-100"
+                    >
+                        Join Now
+                    </a>
+
+                `;
+
+                container.appendChild(card);
+
+            });
+
+        }
+
+
+        // Escape text before inserting it into HTML.
+        function escapeHTML(value) {
+
+            return String(value).replace(/[&<>"']/g, function (char) {
+
+                const entities = {
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#39;"
+                };
+
+                return entities[char];
+
+            });
+
+        }
+
+
+        // Demo contact form.
+        // This stores a message in the browser; it does not email anyone.
+        document.getElementById("contactForm")
+            .addEventListener("submit", function (event) {
+
+                event.preventDefault();
+
+                const name =
+                    document.getElementById("contactName").value.trim();
+
+                const email =
+                    document.getElementById("contactEmail").value.trim();
+
+                const message =
+                    document.getElementById("contactMessage").value.trim();
+
+                const feedback =
+                    document.getElementById("contactFeedback");
+
+                if (!name || !email || !message) {
+
+                    feedback.textContent =
+                        "Please complete all fields.";
+
+                    return;
+                }
+
+                const messages = JSON.parse(
+                    localStorage.getItem("contactMessages") || "[]"
+                );
+
+                messages.push({
+                    name: name,
+                    email: email,
+                    message: message,
+                    date: new Date().toISOString()
+                });
+
+                localStorage.setItem(
+                    "contactMessages",
+                    JSON.stringify(messages)
+                );
+
+                feedback.textContent =
+                    "Thank you! Your message has been saved.";
+
+                feedback.className =
+                    "auth-message message-success";
+
+                this.reset();
+
+            });
+
+
+        // Load the plans after the page opens.
+        displayPlans();
+
+    </script>
+
+</body>
+
+</html>
