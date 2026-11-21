@@ -1,0 +1,518 @@
+!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login / Register | FitZone</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar-custom">
+
+        <a href="index.html" class="logo">
+            FIT<span>ZONE</span>
+        </a>
+
+        <a href="index.html" class="btn-outline">
+            Back to Home
+        </a>
+
+    </nav>
+
+
+    <!-- Login and Registration -->
+
+    <main class="auth-container">
+
+        <div class="auth-card">
+
+            <div class="text-center mb-4">
+
+                <a href="index.html" class="logo">
+                    FIT<span>ZONE</span>
+                </a>
+
+                <p class="auth-subtitle mt-3 mb-0">
+                    Your fitness journey starts here.
+                </p>
+
+            </div>
+
+
+            <!-- Tabs -->
+
+            <div class="auth-tabs">
+
+                <button
+                    type="button"
+                    class="auth-tab active"
+                    id="loginTab"
+                >
+                    Login
+                </button>
+
+                <button
+                    type="button"
+                    class="auth-tab"
+                    id="registerTab"
+                >
+                    Register
+                </button>
+
+            </div>
+
+
+            <!-- Feedback Message -->
+
+            <div
+                id="authMessage"
+                class="auth-message"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- LOGIN FORM -->
+
+            <form id="loginForm" class="auth-form">
+
+                <div class="form-group">
+
+                    <label for="loginEmail">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        class="form-control"
+                        placeholder="Enter your email"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="loginPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        class="form-control"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit" class="btn-custom">
+                    Login
+                </button>
+
+            </form>
+
+
+            <!-- REGISTRATION FORM -->
+
+            <form id="registerForm" class="auth-form" hidden>
+
+                <div class="form-group">
+
+                    <label for="registerName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="registerName"
+                        class="form-control"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        minlength="2"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="registerEmail">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        class="form-control"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="registerPhone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="registerPhone"
+                        class="form-control"
+                        placeholder="Enter your phone number"
+                        autocomplete="tel"
+                        pattern="[0-9]{10}"
+                        maxlength="10"
+                        title="Enter a 10-digit phone number"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="registerPassword">
+                        Create Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        class="form-control"
+                        placeholder="At least 8 characters"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        class="form-control"
+                        placeholder="Re-enter your password"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit" class="btn-custom">
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <p class="text-center mt-4 mb-0"
+               style="color: var(--text-muted); font-size: 13px;">
+
+                By continuing, you agree to use FitZone
+                responsibly.
+
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- Shared Storage -->
+
+    <script src="js/storage.js"></script>
+
+
+    <!-- Login and Registration Logic -->
+
+    <script>
+
+        // Find the page elements.
+
+        const loginTab = document.getElementById("loginTab");
+
+        const registerTab = document.getElementById("registerTab");
+
+        const loginForm = document.getElementById("loginForm");
+
+        const registerForm = document.getElementById("registerForm");
+
+        const authMessage = document.getElementById("authMessage");
+
+
+        // Display a message to the user.
+
+        function showMessage(message, type) {
+
+            authMessage.textContent = message;
+
+            authMessage.className =
+                "auth-message message-" + type;
+
+        }
+
+
+        // Switch between Login and Register.
+
+        function showTab(tab) {
+
+            const showLogin = tab === "login";
+
+            loginForm.hidden = !showLogin;
+
+            registerForm.hidden = showLogin;
+
+            loginTab.classList.toggle("active", showLogin);
+
+            registerTab.classList.toggle("active", !showLogin);
+
+            authMessage.textContent = "";
+
+            authMessage.className = "auth-message";
+
+        }
+
+
+        loginTab.addEventListener("click", function () {
+
+            showTab("login");
+
+        });
+
+
+        registerTab.addEventListener("click", function () {
+
+            showTab("register");
+
+        });
+
+
+        // REGISTER A NEW MEMBER.
+
+        registerForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            const name = document
+                .getElementById("registerName")
+                .value.trim();
+
+            const email = document
+                .getElementById("registerEmail")
+                .value.trim()
+                .toLowerCase();
+
+            const phone = document
+                .getElementById("registerPhone")
+                .value.trim();
+
+            const password = document
+                .getElementById("registerPassword")
+                .value;
+
+            const confirmPassword = document
+                .getElementById("confirmPassword")
+                .value;
+
+
+            // Check whether passwords match.
+
+            if (password !== confirmPassword) {
+
+                showMessage(
+                    "Passwords do not match.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            // Retrieve existing members.
+
+            const members = getMembers();
+
+
+            // Prevent duplicate email registration.
+
+            const existingMember = members.find(function (member) {
+
+                return member.email.toLowerCase() === email;
+
+            });
+
+
+            if (existingMember) {
+
+                showMessage(
+                    "An account with this email already exists.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            // Create a new member.
+
+            const newMember = {
+
+                id: generateId("MEM"),
+
+                name: name,
+
+                email: email,
+
+                phone: phone,
+
+                password: password,
+
+                role: "member",
+
+                planId: null,
+
+                startDate: null,
+
+                endDate: null
+
+            };
+
+
+            // Save the member.
+
+            members.push(newMember);
+
+            saveMembers(members);
+
+
+            // Clear the registration form.
+
+            registerForm.reset();
+
+
+            // Return to Login.
+
+            showTab("login");
+
+            document.getElementById("loginEmail").value = email;
+
+
+            showMessage(
+                "Registration successful! Please log in.",
+                "success"
+            );
+
+        });
+
+
+        // LOG IN AN EXISTING MEMBER OR ADMIN.
+
+        loginForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            const email = document
+                .getElementById("loginEmail")
+                .value.trim()
+                .toLowerCase();
+
+            const password = document
+                .getElementById("loginPassword")
+                .value;
+
+
+            // Retrieve members from localStorage.
+
+            const members = getMembers();
+
+
+            // Find the matching account.
+
+            const user = members.find(function (member) {
+
+                return (
+                    member.email.toLowerCase() === email &&
+                    member.password === password
+                );
+
+            });
+
+
+            // Reject invalid credentials.
+
+            if (!user) {
+
+                showMessage(
+                    "Invalid email or Password.",
+                    "ERROR"
+                );
+
+                return;
+
+            }
+
+
+            // Save the current user without saving the password.
+
+            setCurrentUser({
+
+                id: user.id,
+
+                role: user.role
+
+            });
+
+
+            // Redirect according to account role.
+
+           // Redirect according to account role.
+           if (user.role === "admin") {
+             window.location.href = "admin-dashboard.html";
+              }else {
+             window.location.href = "profile.html";
+             }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
