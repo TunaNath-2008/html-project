@@ -615,61 +615,51 @@
 
 
 
-/* ===== FINAL BLACK & YELLOW PROFILE THEME OVERRIDE ===== */
-
+/* ===== NAVY + ELECTRIC BLUE PROFILE THEME ===== */
 .profile-page {
-  --profile-accent: #facc15;
-  --profile-accent-light: #fde047;
-  --profile-accent-dark: #66520a;
+  --profile-accent: #2f80ff;
+  --profile-accent-light: #7db0ff;
+  --profile-accent-dark: #1d3f7a;
+  background: var(--background) !important;
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+.profile-page .profile-header { background: var(--surface) !important; border-color: var(--border) !important; }
+.profile-page .profile-sidebar,
+.profile-page .profile-card { background: var(--surface) !important; border-color: var(--border) !important; }
+.profile-page .profile-mini-stats div,
+.profile-page .membership-details div { background: var(--surface-light) !important; }
+.profile-page .profile-field input { background: var(--background) !important; border-color: var(--border) !important; }
+.profile-page .progress-ring::before { background: var(--surface) !important; }
+.profile-page .progress-bar { background: var(--surface-light) !important; }
+.profile-page .profile-banner {
+  background:
+    linear-gradient(90deg, rgba(10,17,40,.9), rgba(10,17,40,.6)),
+    url("../images/gym-banner.jpg") center/cover,
+    var(--surface-light) !important;
+  border-color: var(--border) !important;
 }
 
 .profile-page .profile-logo span,
 .profile-page .profile-banner span,
-.profile-page .profile-sidebar h2,
 .profile-page .profile-mini-stats strong,
 .profile-page .membership-details strong,
-.profile-page .progress-ring span {
-  color: var(--profile-accent) !important;
-}
+.profile-page .progress-ring span,
+.profile-page .profile-header nav a.active { color: var(--profile-accent) !important; }
 
-.profile-page .profile-avatar-wrap img {
-  border-color: var(--profile-accent) !important;
-}
+.profile-page .profile-avatar-wrap img { border-color: var(--profile-accent) !important; }
 
 .profile-page .photo-edit,
 .profile-page .member-badge,
 .profile-page .profile-logout,
 .profile-page .orange-button {
   background: var(--profile-accent) !important;
-  color: #111 !important;
+  color: #fff !important;
   border-color: var(--profile-accent) !important;
 }
 
-.profile-page .outline-orange {
-  color: var(--profile-accent) !important;
-  border-color: var(--profile-accent) !important;
-}
-
-.profile-page .profile-sidebar {
-  border-color: var(--profile-accent-dark) !important;
-}
-
-.profile-page .progress-ring {
-  background: conic-gradient(
-    var(--profile-accent) 0 78%,
-    #383838 78% 100%
-  ) !important;
-}
-
-.profile-page .progress-bar span {
-  background: var(--profile-accent) !important;
-}
-
-.profile-page .profile-message {
-  color: var(--profile-accent-light) !important;
-}
-
-
-.profile-page .profile-header nav a.active {
-  color: #facc15 !important;
-}
+.profile-page .outline-orange { color: var(--profile-accent) !important; border-color: var(--profile-accent) !important; }
+.profile-page .profile-sidebar { box-shadow: 0 0 20px rgba(47, 128, 255, 0.12); }
+.profile-page .progress-ring { background: conic-gradient(var(--profile-accent) 0 78%, var(--surface-light) 78% 100%) !important; }
+.profile-page .progress-bar span { background: var(--profile-accent) !important; }
+.profile-page .profile-message { color: var(--profile-accent-light) !important; }
