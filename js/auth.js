@@ -1,4 +1,5 @@
 
+
 // ========================================
 // FITNESS MEMBERSHIP WEBSITE
 // Authentication and Access Control
@@ -48,23 +49,28 @@ function requireAuth(allowedRole) {
         return null;
     }
 
-    // Check whether the user has the required role.
-    if (allowedRole && user.role !== allowedRole) {
+    // Support one role or multiple roles.
+    const allowedRoles = Array.isArray(allowedRole)
+        ? allowedRole
+        : [allowedRole];
 
-        // Send admins to their dashboard.
-        if (user.role === "admin") {
+    // Check whether the user has the required role.
+    if (allowedRole && !allowedRoles.includes(user.role)) {
+
+        // Admins and trainers go to the admin dashboard.
+        if (user.role === "admin" || user.role === "trainer") {
             window.location.replace("admin-dashboard.html");
         }
 
-        // Send members to their dashboard.
+        // Members go to their dashboard.
         else {
-            window.location.replace("profile.html");
+            window.location.replace("dashboard.html");
         }
 
         return null;
     }
 
-    // User is logged in with the correct role.
+    // User has the correct role.
     return user;
 }
 
@@ -105,7 +111,17 @@ function isAdmin() {
 }
 
 
-// 6. CHECK WHETHER A USER IS A MEMBER
+// 6. CHECK WHETHER A USER IS A TRAINER
+
+function isTrainer() {
+
+    const user = getAuthenticatedUser();
+
+    return user !== null && user.role === "trainer";
+}
+
+
+// 7. CHECK WHETHER A USER IS A MEMBER
 
 function isMember() {
 

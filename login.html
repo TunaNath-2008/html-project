@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +17,70 @@
 
     <!-- Shared CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Role Selection */
+
+        .role-selection {
+            margin-bottom: 25px;
+        }
+
+        .role-selection > label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-color, #ffffff);
+        }
+
+        .role-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .role-option {
+            border: 1px solid #374151;
+            background: #111827;
+            color: #d1d5db;
+            padding: 16px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.2s ease;
+            margin: 0;
+        }
+
+        .role-option input {
+            display: none;
+        }
+
+        .role-option strong {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .role-option span {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .role-option.active {
+            border-color: #2f80ff;
+            background: rgba(47, 128, 255, 0.12);
+            color: #ffffff;
+        }
+
+        .role-option:hover {
+            border-color: #2f80ff;
+        }
+
+        .role-icon {
+            font-size: 23px;
+            display: block;
+            margin-bottom: 8px;
+        }
+    </style>
 </head>
 
 <body>
@@ -86,6 +151,53 @@
             <!-- LOGIN FORM -->
             <form id="loginForm" class="auth-form">
 
+                <!-- Login Role Selection -->
+                <div class="role-selection">
+
+                    <label>Login As</label>
+
+                    <div class="role-options">
+
+                        <label class="role-option active" id="memberOption">
+
+                            <input
+                                type="radio"
+                                name="loginRole"
+                                value="member"
+                                checked
+                            >
+
+                            <span class="role-icon">👤</span>
+
+                            <strong>Member</strong>
+
+                            <span>Member Dashboard</span>
+
+                        </label>
+
+
+                        <label class="role-option" id="trainerOption">
+
+                            <input
+                                type="radio"
+                                name="loginRole"
+                                value="trainer"
+                            >
+
+                            <span class="role-icon">🏋️</span>
+
+                            <strong>Trainer</strong>
+
+                            <span>Trainer Dashboard</span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Email -->
                 <div class="form-group">
 
                     <label for="loginEmail">
@@ -104,6 +216,7 @@
                 </div>
 
 
+                <!-- Password -->
                 <div class="form-group">
 
                     <label for="loginPassword">
@@ -132,6 +245,7 @@
             <!-- REGISTRATION FORM -->
             <form id="registerForm" class="auth-form" hidden>
 
+                <!-- Full Name -->
                 <div class="form-group">
 
                     <label for="registerName">
@@ -151,6 +265,7 @@
                 </div>
 
 
+                <!-- Email -->
                 <div class="form-group">
 
                     <label for="registerEmail">
@@ -169,6 +284,7 @@
                 </div>
 
 
+                <!-- Phone -->
                 <div class="form-group">
 
                     <label for="registerPhone">
@@ -190,6 +306,59 @@
                 </div>
 
 
+                <!-- Registration Role Selection -->
+                <div class="role-selection">
+
+                    <label>Register As</label>
+
+                    <div class="role-options">
+
+                        <label
+                            class="role-option active"
+                            id="registerMemberOption"
+                        >
+
+                            <input
+                                type="radio"
+                                name="registerRole"
+                                value="member"
+                                checked
+                            >
+
+                            <span class="role-icon">👤</span>
+
+                            <strong>Member</strong>
+
+                            <span>Member Account</span>
+
+                        </label>
+
+
+                        <label
+                            class="role-option"
+                            id="registerTrainerOption"
+                        >
+
+                            <input
+                                type="radio"
+                                name="registerRole"
+                                value="trainer"
+                            >
+
+                            <span class="role-icon">🏋️</span>
+
+                            <strong>Trainer</strong>
+
+                            <span>Trainer Account</span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Password -->
                 <div class="form-group">
 
                     <label for="registerPassword">
@@ -209,6 +378,7 @@
                 </div>
 
 
+                <!-- Confirm Password -->
                 <div class="form-group">
 
                     <label for="confirmPassword">
@@ -239,7 +409,7 @@
                 class="text-center mt-4 mb-0"
                 style="color: var(--text-muted); font-size: 13px;"
             >
-                By continuing, you agree to use FitZone
+                By continuing, you agree to use ACTIVE NATION
                 responsibly.
             </p>
 
@@ -267,6 +437,17 @@
 
         const authMessage = document.getElementById("authMessage");
 
+        const memberOption = document.getElementById("memberOption");
+        const trainerOption = document.getElementById("trainerOption");
+
+        const registerMemberOption = document.getElementById(
+            "registerMemberOption"
+        );
+
+        const registerTrainerOption = document.getElementById(
+            "registerTrainerOption"
+        );
+
 
         // =====================================
         // 2. DISPLAY MESSAGE
@@ -283,7 +464,77 @@
 
 
         // =====================================
-        // 3. SWITCH LOGIN / REGISTER TABS
+        // 3. LOGIN ROLE SELECTION
+        // =====================================
+
+        function updateRoleSelection() {
+
+            const selectedRole = document.querySelector(
+                'input[name="loginRole"]:checked'
+            ).value;
+
+            memberOption.classList.toggle(
+                "active",
+                selectedRole === "member"
+            );
+
+            trainerOption.classList.toggle(
+                "active",
+                selectedRole === "trainer"
+            );
+
+        }
+
+
+        document.querySelectorAll(
+            'input[name="loginRole"]'
+        ).forEach(input => {
+
+            input.addEventListener(
+                "change",
+                updateRoleSelection
+            );
+
+        });
+
+
+        // =====================================
+        // 4. REGISTRATION ROLE SELECTION
+        // =====================================
+
+        function updateRegisterRoleSelection() {
+
+            const selectedRole = document.querySelector(
+                'input[name="registerRole"]:checked'
+            ).value;
+
+            registerMemberOption.classList.toggle(
+                "active",
+                selectedRole === "member"
+            );
+
+            registerTrainerOption.classList.toggle(
+                "active",
+                selectedRole === "trainer"
+            );
+
+        }
+
+
+        document.querySelectorAll(
+            'input[name="registerRole"]'
+        ).forEach(input => {
+
+            input.addEventListener(
+                "change",
+                updateRegisterRoleSelection
+            );
+
+        });
+
+
+        // =====================================
+        // 5. SWITCH LOGIN / REGISTER TABS
         // =====================================
 
         function showTab(tab) {
@@ -294,11 +545,9 @@
             registerForm.hidden = showLogin;
 
             loginTab.classList.toggle("active", showLogin);
-
             registerTab.classList.toggle("active", !showLogin);
 
             authMessage.textContent = "";
-
             authMessage.className = "auth-message";
 
         }
@@ -319,7 +568,7 @@
 
 
         // =====================================
-        // 4. REGISTER NEW MEMBER
+        // 6. REGISTER MEMBER OR TRAINER
         // =====================================
 
         registerForm.addEventListener("submit", function (event) {
@@ -349,7 +598,14 @@
                 .value;
 
 
-            // Check password length.
+            // Get selected registration role
+
+            const selectedRole = document.querySelector(
+                'input[name="registerRole"]:checked'
+            ).value;
+
+
+            // Check password length
 
             if (password.length < 8) {
 
@@ -363,7 +619,7 @@
             }
 
 
-            // Check whether passwords match.
+            // Check whether passwords match
 
             if (password !== confirmPassword) {
 
@@ -377,7 +633,7 @@
             }
 
 
-            // Validate phone number.
+            // Validate phone number
 
             if (!/^[0-9]{10}$/.test(phone)) {
 
@@ -391,12 +647,12 @@
             }
 
 
-            // Retrieve existing members.
+            // Retrieve existing accounts
 
             const members = getMembers();
 
 
-            // Prevent duplicate email registration.
+            // Prevent duplicate email registration
 
             const existingMember = members.find(function (member) {
 
@@ -420,11 +676,13 @@
             }
 
 
-            // Create new member.
+            // Create new account
 
             const newMember = {
 
-                id: generateId("MEM"),
+                id: generateId(
+                    selectedRole === "trainer" ? "TRN" : "MEM"
+                ),
 
                 name: name,
 
@@ -434,7 +692,7 @@
 
                 password: password,
 
-                role: "member",
+                role: selectedRole,
 
                 planId: null,
 
@@ -445,30 +703,45 @@
             };
 
 
-            // Save member.
+            // Save account
 
             members.push(newMember);
 
             saveMembers(members);
 
 
-            // Reset registration form.
+            // Reset registration form
 
             registerForm.reset();
 
+            updateRegisterRoleSelection();
 
-            // Switch to login tab.
+
+            // Switch to login tab
 
             showTab("login");
 
 
-            // Automatically fill registered email.
+            // Automatically fill registered email
 
             document.getElementById("loginEmail").value = email;
 
 
+            // Automatically select matching login role
+
+            document.querySelector(
+                `input[name="loginRole"][value="${selectedRole}"]`
+            ).checked = true;
+
+            updateRoleSelection();
+
+
+            // Show success message
+
             showMessage(
-                "Registration successful! Please log in.",
+                selectedRole === "trainer"
+                    ? "Trainer registration successful! Please log in."
+                    : "Member registration successful! Please log in.",
                 "success"
             );
 
@@ -476,7 +749,7 @@
 
 
         // =====================================
-        // 5. LOGIN EXISTING MEMBER OR ADMIN
+        // 7. LOGIN MEMBER OR TRAINER
         // =====================================
 
         loginForm.addEventListener("submit", function (event) {
@@ -494,7 +767,12 @@
                 .value;
 
 
-            // Validate empty fields.
+            const selectedRole = document.querySelector(
+                'input[name="loginRole"]:checked'
+            ).value;
+
+
+            // Validate empty fields
 
             if (!email || !password) {
 
@@ -508,12 +786,12 @@
             }
 
 
-            // Retrieve registered accounts.
+            // Retrieve registered accounts
 
             const members = getMembers();
 
 
-            // Find matching account.
+            // Find matching account
 
             const user = members.find(function (member) {
 
@@ -526,7 +804,7 @@
             });
 
 
-            // Reject invalid credentials.
+            // Reject invalid credentials
 
             if (!user) {
 
@@ -540,43 +818,66 @@
             }
 
 
-            // Validate account role.
+            // MEMBER LOGIN
 
-            if (
-                user.role !== "admin" &&
-                user.role !== "member"
-            ) {
+            if (selectedRole === "member") {
 
-                showMessage(
-                    "Invalid account role.",
-                    "error"
-                );
+                if (user.role !== "member") {
+
+                    showMessage(
+                        "This account is not registered as a member.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                setCurrentUser({
+
+                    id: user.id,
+
+                    role: "member"
+
+                });
+
+
+                window.location.href = "dashboard.html";
 
                 return;
 
             }
 
 
-            // Save current user session.
+            // TRAINER LOGIN
 
-            setCurrentUser({
+            if (selectedRole === "trainer") {
 
-                id: user.id,
+                if (user.role !== "trainer" && user.role !== "admin") {
 
-                role: user.role
+                    showMessage(
+                        "This account does not have trainer dashboard access.",
+                        "error"
+                    );
 
-            });
+                    return;
+
+                }
 
 
-            // Redirect according to account role.
+                setCurrentUser({
 
-            if (user.role === "admin") {
+                    id: user.id,
+
+                    role: user.role
+
+                });
+
 
                 window.location.href = "admin-dashboard.html";
 
-            } else {
-
-                window.location.href = "dashboard.html";
+                return;
 
             }
 
@@ -584,13 +885,18 @@
 
 
         // =====================================
-        // 6. INITIAL PAGE STATE
+        // 8. INITIAL PAGE STATE
         // =====================================
 
         showTab("login");
+
+        updateRoleSelection();
+
+        updateRegisterRoleSelection();
 
     </script>
 
 </body>
 
 </html>
+
