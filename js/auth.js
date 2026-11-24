@@ -1,3 +1,4 @@
+
 // ========================================
 // FITNESS MEMBERSHIP WEBSITE
 // Authentication and Access Control
@@ -75,8 +76,8 @@ function logoutUser() {
     // Clear the current login session.
     setCurrentUser(null);
 
-    // Return to the login page.
-    window.location.replace("login.html");
+    // Redirect to the home page.
+    window.location.replace("index.html");
 }
 
 

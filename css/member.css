@@ -663,3 +663,986 @@
 .profile-page .progress-ring { background: conic-gradient(var(--profile-accent) 0 78%, var(--surface-light) 78% 100%) !important; }
 .profile-page .progress-bar span { background: var(--profile-accent) !important; }
 .profile-page .profile-message { color: var(--profile-accent-light) !important; }
+
+
+/* ==============================================
+   FITZONE MEMBER DASHBOARD
+   Vertical Sidebar Navigation
+   Existing Theme Preserved
+================================================ */
+
+
+/* MAIN PAGE */
+
+.member-dashboard-page {
+    min-height: 100vh;
+    margin: 0;
+}
+
+
+/* ==============================================
+   LEFT SIDEBAR
+================================================ */
+
+.member-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 250px;
+    height: 100vh;
+
+    background: #111111;
+
+    border-right: 1px solid #292929;
+
+    padding: 30px 18px;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 1000;
+}
+
+
+/* LOGO */
+
+.sidebar-logo {
+    display: inline-block;
+
+    font-size: 28px;
+    font-weight: 800;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    letter-spacing: 1px;
+
+    margin: 0 0 55px 10px;
+}
+
+.sidebar-logo span {
+    color: #2f80ff;
+}
+
+
+/* SIDEBAR LABEL */
+
+.sidebar-label {
+    color: #888888;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin: 0 0 18px 12px;
+}
+
+
+/* NAVIGATION CONTAINER */
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+
+/* NAVIGATION LINKS */
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border-radius: 8px;
+
+    color: #bdbdbd;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: all 0.25s ease;
+}
+
+
+/* ICONS */
+
+.sidebar-icon {
+    width: 23px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 19px;
+
+    flex-shrink: 0;
+}
+
+
+/* HOVER */
+
+.sidebar-link:hover {
+    background: #222222;
+
+    color: #ffffff;
+}
+
+
+/* ACTIVE LINK */
+
+.sidebar-link.active {
+    background: #2f80ff;
+
+    color: #ffffff;
+}
+
+
+/* ==============================================
+   SIDEBAR BOTTOM
+================================================ */
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+
+.sidebar-divider {
+    height: 1px;
+
+    background: #292929;
+
+    margin: 15px 0 20px;
+}
+
+
+/* LOGOUT BUTTON */
+
+.sidebar-logout {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 14px 15px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #202020;
+
+    color: #ff7777;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+
+.sidebar-logout:hover {
+    background: #352020;
+
+    color: #ff5555;
+}
+
+
+/* ==============================================
+   DASHBOARD CONTENT
+================================================ */
+
+.member-page-content {
+    margin-left: 250px;
+
+    width: calc(100% - 250px);
+
+    min-height: 100vh;
+
+    padding: 35px 40px;
+}
+
+
+.dashboard-inner {
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+}
+
+
+/* WELCOME HEADING */
+
+.dashboard-heading {
+    margin-bottom: 30px;
+}
+
+
+.dashboard-heading h1 {
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+
+/* ==============================================
+   DASHBOARD STATISTICS
+================================================ */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+
+.stat-card {
+    min-width: 0;
+
+    padding: 24px;
+
+    border-radius: 12px;
+}
+
+
+.stat-card p {
+    margin-bottom: 12px;
+}
+
+
+.stat-card h2 {
+    font-size: 23px;
+    font-weight: 700;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* ==============================================
+   MEMBERSHIP CONTENT
+================================================ */
+
+.dashboard-section {
+    margin-bottom: 25px;
+}
+
+
+.dashboard-section .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 25px;
+}
+
+
+.dashboard-section .section-header h2 {
+    margin-bottom: 8px;
+}
+
+
+/* MEMBERSHIP DETAILS */
+
+.dashboard-section .membership-details {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin: 25px 0;
+}
+
+
+.dashboard-section .membership-details h3 {
+    font-size: 20px;
+    font-weight: 700;
+
+    overflow-wrap: anywhere;
+}
+
+
+.detail-label {
+    margin-bottom: 8px;
+}
+
+
+/* PLAN FEATURES */
+
+.dashboard-section .plan-features {
+    padding-left: 22px;
+}
+
+
+.dashboard-section .plan-features li {
+    margin-bottom: 10px;
+}
+
+
+/* ==============================================
+   PAYMENT TABLE
+================================================ */
+
+.dashboard-section .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+.dashboard-section .table-custom {
+    width: 100%;
+    min-width: 500px;
+}
+
+
+/* ==============================================
+   MODAL
+================================================ */
+
+#renewModal {
+    z-index: 2000;
+}
+
+
+/* ==============================================
+   FOOTER
+================================================ */
+
+.member-dashboard-footer {
+    margin-left: 250px;
+}
+
+
+/* ==============================================
+   RESPONSIVE SIDEBAR
+================================================ */
+
+@media (max-width: 900px) {
+
+    .member-sidebar {
+        width: 210px;
+    }
+
+    .member-page-content {
+        margin-left: 210px;
+
+        width: calc(100% - 210px);
+
+        padding: 25px;
+    }
+
+    .member-dashboard-footer {
+        margin-left: 210px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-section .membership-details {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+/* ==============================================
+   MOBILE RESPONSIVENESS
+================================================ */
+
+@media (max-width: 600px) {
+
+    .member-sidebar {
+        position: relative;
+
+        width: 100%;
+        height: auto;
+
+        padding: 18px;
+
+        border-right: none;
+        border-bottom: 1px solid #292929;
+    }
+
+
+    .sidebar-logo {
+        font-size: 25px;
+
+        margin: 0 0 20px 5px;
+    }
+
+
+    .sidebar-label {
+        display: none;
+    }
+
+
+    .sidebar-nav {
+        flex-direction: row;
+
+        gap: 8px;
+    }
+
+
+    .sidebar-link {
+        flex: 1;
+
+        justify-content: center;
+
+        gap: 7px;
+
+        padding: 12px 8px;
+
+        font-size: 12px;
+    }
+
+
+    .sidebar-icon {
+        width: auto;
+        font-size: 17px;
+    }
+
+
+    .sidebar-bottom {
+        margin-top: 12px;
+    }
+
+
+    .sidebar-divider {
+        margin: 10px 0;
+    }
+
+
+    .sidebar-logout {
+        justify-content: center;
+
+        padding: 11px;
+    }
+
+
+    .member-page-content {
+        margin-left: 0;
+
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 22px 16px;
+    }
+
+
+    .member-dashboard-footer {
+        margin-left: 0;
+    }
+
+
+    .dashboard-heading h1 {
+        font-size: 26px;
+    }
+
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+
+    .dashboard-section .membership-details {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+
+    .dashboard-section .section-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+}
+
+
+/* =========================================
+   PROFILE PAGE - SAME DASHBOARD LAYOUT
+========================================= */
+
+.profile-page {
+  background: #101010;
+  color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* Main content beside sidebar */
+.profile-page .member-page-content {
+  margin-left: 245px;
+  min-height: 100vh;
+  padding: 35px;
+}
+
+.profile-page .dashboard-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Sidebar */
+.profile-page .member-sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 245px;
+  min-height: 100vh;
+  background: #111;
+  border-right: 1px solid #303030;
+  padding: 28px 18px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.profile-page .sidebar-logo {
+  color: white;
+  font-size: 27px;
+  font-weight: 800;
+  text-decoration: none;
+  margin: 0 0 42px 10px;
+}
+
+.profile-page .sidebar-logo span {
+  color: #2f80ff;
+}
+
+.profile-page .sidebar-label {
+  color: #777;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin: 0 0 14px 10px;
+}
+
+.profile-page .sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.profile-page .sidebar-link,
+.profile-page .sidebar-logout {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  padding: 13px 14px;
+  border-radius: 9px;
+  color: #bbb;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.profile-page .sidebar-link:hover,
+.profile-page .sidebar-logout:hover {
+  background: #222;
+  color: white;
+}
+
+.profile-page .sidebar-link.active {
+  background: #202d42;
+  color: #2f80ff;
+}
+
+.profile-page .sidebar-icon {
+  width: 22px;
+  text-align: center;
+  font-size: 17px;
+}
+
+.profile-page .sidebar-bottom {
+  margin-top: auto;
+}
+
+.profile-page .sidebar-divider {
+  height: 1px;
+  background: #303030;
+  margin: 15px 0;
+}
+
+.profile-page .sidebar-logout {
+  color: #ff7777;
+}
+
+/* Profile overview */
+.profile-overview-card {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  background: #1b1b1b;
+  border: 1px solid #333;
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 22px;
+}
+
+.profile-avatar-wrap {
+  position: relative;
+  width: 85px;
+  height: 85px;
+  flex-shrink: 0;
+}
+
+.profile-avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #2f80ff;
+  background: #292929;
+}
+
+.photo-edit {
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #2f80ff;
+  color: white;
+  border: 2px solid #1b1b1b;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.profile-overview-info {
+  flex: 1;
+  min-width: 150px;
+}
+
+.profile-overview-info h2 {
+  font-size: 21px;
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
+}
+
+.profile-overview-info p {
+  color: #aaa;
+  font-size: 13px;
+  margin: 9px 0 0;
+}
+
+.member-badge {
+  display: inline-block;
+  background: #202d42;
+  color: #2f80ff;
+  border-radius: 20px;
+  padding: 5px 11px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.profile-mini-stats {
+  display: flex;
+  gap: 10px;
+}
+
+.profile-mini-stats div {
+  min-width: 78px;
+  text-align: center;
+  background: #242424;
+  border-radius: 10px;
+  padding: 12px 8px;
+}
+
+.profile-mini-stats strong,
+.profile-mini-stats span {
+  display: block;
+}
+
+.profile-mini-stats strong {
+  color: #2f80ff;
+  font-size: 17px;
+}
+
+.profile-mini-stats span {
+  color: #aaa;
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+/* Profile content cards */
+.profile-content-card {
+  margin-bottom: 22px;
+}
+
+.profile-card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.profile-card-heading h2 {
+  font-size: 19px;
+  margin: 0 0 5px;
+}
+
+.profile-card-heading p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.profile-page .outline-orange {
+  border: 1px solid #2f80ff;
+  color: #2f80ff;
+  background: transparent;
+  border-radius: 8px;
+  padding: 9px 15px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Personal information fields */
+.profile-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.profile-field label {
+  display: block;
+  color: #aaa;
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+
+.profile-field input {
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #383838;
+  border-radius: 8px;
+  background: #111;
+  color: white;
+  font: inherit;
+  font-size: 14px;
+}
+
+.profile-field input:disabled {
+  opacity: 1;
+  color: #eee;
+}
+
+.profile-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.profile-message {
+  color: #2f80ff;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+/* Membership information */
+.profile-page .membership-details {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.profile-page .membership-details div {
+  min-width: 0;
+  background: #242424;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.profile-page .membership-details h3 {
+  color: #2f80ff;
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+
+.profile-page .detail-label {
+  color: #aaa;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+/* Progress section */
+.profile-page .progress-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-page .progress-ring {
+  width: 78px;
+  height: 78px;
+  flex: 0 0 78px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: conic-gradient(#2f80ff 0 78%, #383838 78% 100%);
+  position: relative;
+}
+
+.profile-page .progress-ring::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  background: #1b1b1b;
+  border-radius: 50%;
+}
+
+.profile-page .progress-ring span {
+  position: relative;
+  color: white;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.profile-page .progress-info {
+  flex: 1;
+}
+
+.profile-page .progress-info h3 {
+  margin: 0 0 5px;
+  font-size: 16px;
+}
+
+.profile-page .progress-info p {
+  color: #aaa;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.profile-page .progress-bar {
+  height: 8px;
+  background: #383838;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.profile-page .progress-bar span {
+  display: block;
+  width: 78%;
+  height: 100%;
+  background: #2f80ff;
+  border-radius: inherit;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .profile-page .member-page-content {
+    margin-left: 210px;
+    padding: 25px 18px;
+  }
+
+  .profile-page .member-sidebar {
+    width: 210px;
+  }
+
+  .profile-page .membership-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profile-mini-stats {
+    width: 100%;
+  }
+}
+
+@media (max-width: 650px) {
+  .profile-page .member-sidebar {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    padding: 15px;
+  }
+
+  .profile-page .sidebar-logo {
+    margin: 0 0 15px 5px;
+  }
+
+  .profile-page .sidebar-nav {
+    flex-direction: row;
+  }
+
+  .profile-page .sidebar-link {
+    flex: 1;
+    justify-content: center;
+    padding: 10px 6px;
+    font-size: 12px;
+  }
+
+  .profile-page .sidebar-bottom {
+    margin-top: 10px;
+  }
+
+  .profile-page .sidebar-divider {
+    margin: 8px 0;
+  }
+
+  .profile-page .member-page-content {
+    margin-left: 0;
+    padding: 22px 14px;
+  }
+
+  .profile-fields,
+  .profile-page .membership-details {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-overview-card {
+    gap: 14px;
+  }
+
+  .profile-mini-stats {
+    justify-content: space-between;
+  }
+
+  .profile-card-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+

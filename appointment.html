@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment | ACTIVE NATION</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/member.css">
+    <link rel="stylesheet" href="css/appointment.css">
+</head>
+
+<body class="member-dashboard-page">
+
+    <aside class="member-sidebar">
+        <div class="sidebar-logo">
+            <h2>ACTIVE NATION</h2>
+        </div>
+
+        <p class="sidebar-label">MEMBER MENU</p>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="sidebar-link">
+                <span class="sidebar-icon">▦</span>
+                Dashboard
+            </a>
+
+            <a href="profile.html" class="sidebar-link">
+                <span class="sidebar-icon">◉</span>
+                My Profile
+            </a>
+
+            <a href="appointment.html" class="sidebar-link active">
+                <span class="sidebar-icon">▣</span>
+                Book Appointment
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-divider"></div>
+            <button id="logoutBtn" class="sidebar-logout">
+                ↪ Logout
+            </button>
+        </div>
+    </aside>
+
+    <main class="member-page-content">
+        <div class="appointment-container">
+
+            <header class="appointment-header">
+                <div>
+                    <p class="appointment-eyebrow">TRAINER SERVICES</p>
+                    <h1>Book an Appointment</h1>
+                    <p>Schedule a personal training session with your preferred trainer.</p>
+                </div>
+            </header>
+
+            <section class="appointment-layout">
+
+                <div class="appointment-form-card">
+                    <h2>Appointment Details</h2>
+                    <p class="form-subtitle">Fill in the details to request your session.</p>
+
+                    <form id="appointmentForm">
+
+                        <div class="form-group">
+                            <label for="trainer">Select Trainer</label>
+                            <select id="trainer" required>
+                                <option value="">Choose a trainer</option>
+                                <option value="Rahul Sharma">Rahul Sharma</option>
+                                <option value="Aman Verma">Aman Verma</option>
+                                <option value="Priya Singh">Priya Singh</option>
+                                <option value="Neha Kapoor">Neha Kapoor</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="trainingType">Training Type</label>
+                            <select id="trainingType" required>
+                                <option value="">Select training type</option>
+                                <option value="Personal Training">Personal Training</option>
+                                <option value="Strength Training">Strength Training</option>
+                                <option value="Weight Training">Weight Training</option>
+                                <option value="Cardio Guidance">Cardio Guidance</option>
+                                <option value="Fitness Consultation">Fitness Consultation</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="appointmentDate">Appointment Date</label>
+                                <input type="date" id="appointmentDate" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="appointmentTime">Preferred Time</label>
+                                <select id="appointmentTime" required>
+                                    <option value="">Select time</option>
+                                    <option value="07:00 AM">07:00 AM</option>
+                                    <option value="08:00 AM">08:00 AM</option>
+                                    <option value="09:00 AM">09:00 AM</option>
+                                    <option value="10:00 AM">10:00 AM</option>
+                                    <option value="04:00 PM">04:00 PM</option>
+                                    <option value="05:00 PM">05:00 PM</option>
+                                    <option value="06:00 PM">06:00 PM</option>
+                                    <option value="07:00 PM">07:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appointmentNote">Additional Notes</label>
+                            <textarea
+                                id="appointmentNote"
+                                rows="4"
+                                placeholder="Tell your trainer what you need help with..."
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="book-appointment-btn">
+                            Book Appointment →
+                        </button>
+
+                        <p id="appointmentMessage" class="appointment-message"></p>
+
+                    </form>
+                </div>
+
+                <div class="appointment-info-card">
+                    <div class="info-icon">✦</div>
+                    <h2>Train With Guidance</h2>
+                    <p>
+                        Get personalised guidance from our trainers and make
+                        your fitness sessions more structured.
+                    </p>
+
+                    <div class="info-divider"></div>
+
+                    <div class="info-item">
+                        <span>01</span>
+                        <div>
+                            <h3>Choose your trainer</h3>
+                            <p>Select the trainer you prefer.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span>02</span>
+                        <div>
+                            <h3>Select your schedule</h3>
+                            <p>Choose a suitable date and time.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span>03</span>
+                        <div>
+                            <h3>Wait for confirmation</h3>
+                            <p>Your request will initially show as pending.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="appointment-history">
+                <div class="history-heading">
+                    <div>
+                        <p class="appointment-eyebrow">YOUR SCHEDULE</p>
+                        <h2>My Appointments</h2>
+                    </div>
+                    <span id="appointmentCount">0 appointments</span>
+                </div>
+
+                <div id="appointmentList" class="appointment-list">
+                    <div class="empty-appointments">
+                        <span>▣</span>
+                        <h3>No appointments yet</h3>
+                        <p>Your booked sessions will appear here.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/appointment.js"></script>
+
+</body>
+</html>
