@@ -1,4 +1,5 @@
-!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -20,7 +21,6 @@
 <body>
 
     <!-- Navigation -->
-
     <nav class="navbar-custom">
 
         <a href="index.html" class="logo">
@@ -35,7 +35,6 @@
 
 
     <!-- Login and Registration -->
-
     <main class="auth-container">
 
         <div class="auth-card">
@@ -54,7 +53,6 @@
 
 
             <!-- Tabs -->
-
             <div class="auth-tabs">
 
                 <button
@@ -77,7 +75,6 @@
 
 
             <!-- Feedback Message -->
-
             <div
                 id="authMessage"
                 class="auth-message"
@@ -87,7 +84,6 @@
 
 
             <!-- LOGIN FORM -->
-
             <form id="loginForm" class="auth-form">
 
                 <div class="form-group">
@@ -134,7 +130,6 @@
 
 
             <!-- REGISTRATION FORM -->
-
             <form id="registerForm" class="auth-form" hidden>
 
                 <div class="form-group">
@@ -240,12 +235,12 @@
             </form>
 
 
-            <p class="text-center mt-4 mb-0"
-               style="color: var(--text-muted); font-size: 13px;">
-
+            <p
+                class="text-center mt-4 mb-0"
+                style="color: var(--text-muted); font-size: 13px;"
+            >
                 By continuing, you agree to use FitZone
                 responsibly.
-
             </p>
 
         </div>
@@ -254,28 +249,28 @@
 
 
     <!-- Shared Storage -->
-
     <script src="js/storage.js"></script>
 
 
     <!-- Login and Registration Logic -->
-
     <script>
 
-        // Find the page elements.
+        // =====================================
+        // 1. GET PAGE ELEMENTS
+        // =====================================
 
         const loginTab = document.getElementById("loginTab");
-
         const registerTab = document.getElementById("registerTab");
 
         const loginForm = document.getElementById("loginForm");
-
         const registerForm = document.getElementById("registerForm");
 
         const authMessage = document.getElementById("authMessage");
 
 
-        // Display a message to the user.
+        // =====================================
+        // 2. DISPLAY MESSAGE
+        // =====================================
 
         function showMessage(message, type) {
 
@@ -287,14 +282,15 @@
         }
 
 
-        // Switch between Login and Register.
+        // =====================================
+        // 3. SWITCH LOGIN / REGISTER TABS
+        // =====================================
 
         function showTab(tab) {
 
             const showLogin = tab === "login";
 
             loginForm.hidden = !showLogin;
-
             registerForm.hidden = showLogin;
 
             loginTab.classList.toggle("active", showLogin);
@@ -322,11 +318,14 @@
         });
 
 
-        // REGISTER A NEW MEMBER.
+        // =====================================
+        // 4. REGISTER NEW MEMBER
+        // =====================================
 
         registerForm.addEventListener("submit", function (event) {
 
             event.preventDefault();
+
 
             const name = document
                 .getElementById("registerName")
@@ -350,12 +349,40 @@
                 .value;
 
 
+            // Check password length.
+
+            if (password.length < 8) {
+
+                showMessage(
+                    "Password must contain at least 8 characters.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
             // Check whether passwords match.
 
             if (password !== confirmPassword) {
 
                 showMessage(
                     "Passwords do not match.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            // Validate phone number.
+
+            if (!/^[0-9]{10}$/.test(phone)) {
+
+                showMessage(
+                    "Please enter a valid 10-digit phone number.",
                     "error"
                 );
 
@@ -373,7 +400,10 @@
 
             const existingMember = members.find(function (member) {
 
-                return member.email.toLowerCase() === email;
+                return (
+                    member.email &&
+                    member.email.toLowerCase() === email
+                );
 
             });
 
@@ -390,7 +420,7 @@
             }
 
 
-            // Create a new member.
+            // Create new member.
 
             const newMember = {
 
@@ -415,21 +445,24 @@
             };
 
 
-            // Save the member.
+            // Save member.
 
             members.push(newMember);
 
             saveMembers(members);
 
 
-            // Clear the registration form.
+            // Reset registration form.
 
             registerForm.reset();
 
 
-            // Return to Login.
+            // Switch to login tab.
 
             showTab("login");
+
+
+            // Automatically fill registered email.
 
             document.getElementById("loginEmail").value = email;
 
@@ -442,11 +475,14 @@
         });
 
 
-        // LOG IN AN EXISTING MEMBER OR ADMIN.
+        // =====================================
+        // 5. LOGIN EXISTING MEMBER OR ADMIN
+        // =====================================
 
         loginForm.addEventListener("submit", function (event) {
 
             event.preventDefault();
+
 
             const email = document
                 .getElementById("loginEmail")
@@ -458,16 +494,31 @@
                 .value;
 
 
-            // Retrieve members from localStorage.
+            // Validate empty fields.
+
+            if (!email || !password) {
+
+                showMessage(
+                    "Please enter your email and password.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            // Retrieve registered accounts.
 
             const members = getMembers();
 
 
-            // Find the matching account.
+            // Find matching account.
 
             const user = members.find(function (member) {
 
                 return (
+                    member.email &&
                     member.email.toLowerCase() === email &&
                     member.password === password
                 );
@@ -480,8 +531,8 @@
             if (!user) {
 
                 showMessage(
-                    "Invalid email or Password.",
-                    "ERROR"
+                    "Invalid email or password. Please try again.",
+                    "error"
                 );
 
                 return;
@@ -489,7 +540,24 @@
             }
 
 
-            // Save the current user without saving the password.
+            // Validate account role.
+
+            if (
+                user.role !== "admin" &&
+                user.role !== "member"
+            ) {
+
+                showMessage(
+                    "Invalid account role.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            // Save current user session.
 
             setCurrentUser({
 
@@ -502,14 +570,24 @@
 
             // Redirect according to account role.
 
-           // Redirect according to account role.
-           if (user.role === "admin") {
-             window.location.href = "admin-dashboard.html";
-              }else {
-             window.location.href = "profile.html";
-             }
+            if (user.role === "admin") {
+
+                window.location.href = "admin-dashboard.html";
+
+            } else {
+
+                window.location.href = "profile.html";
+
+            }
 
         });
+
+
+        // =====================================
+        // 6. INITIAL PAGE STATE
+        // =====================================
+
+        showTab("login");
 
     </script>
 

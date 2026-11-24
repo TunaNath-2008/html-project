@@ -1,8 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Member Dashboard | FitZone</title>
 
     <!-- Bootstrap -->
@@ -18,32 +21,46 @@
 
 <body>
 
-    <!-- Navigation Bar -->
+    <!-- SHARED NAVIGATION -->
     <nav class="navbar-custom">
+
         <div class="container-custom navbar-content">
 
-            <a href="index.html" class="logo">
+            <a href="dashboard.html" class="logo">
                 FitZone<span>.</span>
             </a>
 
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="profile.html">My Profile</a>
 
-                <button type="button" class="btn-custom" id="logoutBtn">
+                <a href="dashboard.html" class="active">
+                    Dashboard
+                </a>
+
+                <a href="profile.html">
+                    My Profile
+                </a>
+
+                <button
+                    type="button"
+                    class="btn-custom"
+                    id="logoutBtn"
+                >
                     Logout
                 </button>
+
             </div>
 
         </div>
+
     </nav>
 
 
-    <!-- Main Dashboard -->
+    <!-- MAIN DASHBOARD -->
     <main class="container-custom section">
 
         <!-- Welcome Section -->
         <section class="dashboard-heading">
+
             <p class="text-muted">MEMBER AREA</p>
 
             <h1>
@@ -53,107 +70,157 @@
             <p class="text-muted">
                 Manage your membership and keep track of your fitness journey.
             </p>
+
         </section>
 
 
-        <!-- Membership Statistics -->
+        <!-- MEMBERSHIP STATISTICS -->
         <section class="stats-grid">
 
             <div class="stat-card">
+
                 <p>Membership Plan</p>
+
                 <h2 id="planName">Loading...</h2>
+
             </div>
 
+
             <div class="stat-card">
+
                 <p>Membership Status</p>
+
                 <h2 id="membershipStatus">Loading...</h2>
+
             </div>
 
+
             <div class="stat-card">
+
                 <p>Membership Ends</p>
+
                 <h2 id="membershipEnd">--</h2>
+
             </div>
 
         </section>
 
 
-        <!-- Membership Details -->
+        <!-- MEMBERSHIP DETAILS -->
         <section class="content-card dashboard-section">
 
             <div class="section-header">
+
                 <div>
+
                     <h2>My Membership</h2>
+
                     <p class="text-muted">
                         Your current membership details.
                     </p>
+
                 </div>
 
-                <button type="button" class="btn-custom" id="renewBtn">
+                <button
+                    type="button"
+                    class="btn-custom"
+                    id="renewBtn"
+                >
                     Choose or Renew Plan
                 </button>
+
             </div>
+
 
             <div class="membership-details">
 
                 <div>
+
                     <p class="detail-label">Plan Price</p>
+
                     <h3 id="planPrice">₹0</h3>
+
                 </div>
 
+
                 <div>
+
                     <p class="detail-label">Start Date</p>
+
                     <h3 id="membershipStart">--</h3>
+
                 </div>
 
+
                 <div>
+
                     <p class="detail-label">End Date</p>
+
                     <h3 id="membershipEndDetails">--</h3>
+
                 </div>
 
             </div>
+
 
             <hr>
 
             <h3>Plan Benefits</h3>
 
             <ul id="planFeatures" class="plan-features">
+
                 <li>Loading plan benefits...</li>
+
             </ul>
 
         </section>
 
 
-        <!-- Payment History -->
+        <!-- PAYMENT HISTORY -->
         <section class="content-card dashboard-section">
 
             <div class="section-header">
+
                 <div>
+
                     <h2>Payment History</h2>
+
                     <p class="text-muted">
                         View your recorded membership payments.
                     </p>
+
                 </div>
+
             </div>
 
+
             <div class="table-responsive">
+
                 <table class="table-custom">
 
                     <thead>
+
                         <tr>
                             <th>Payment ID</th>
                             <th>Plan</th>
                             <th>Amount</th>
                             <th>Date</th>
                         </tr>
+
                     </thead>
 
                     <tbody id="paymentHistory">
+
                         <tr>
-                            <td colspan="4">Loading payment history...</td>
+                            <td colspan="4">
+                                Loading payment history...
+                            </td>
                         </tr>
+
                     </tbody>
 
                 </table>
+
             </div>
 
         </section>
@@ -161,12 +228,13 @@
     </main>
 
 
-    <!-- Choose / Renew Membership Modal -->
+    <!-- CHOOSE / RENEW MEMBERSHIP MODAL -->
     <div class="modal-overlay hidden" id="renewModal">
 
         <div class="modal-box">
 
             <div class="section-header">
+
                 <h2>Choose a Membership Plan</h2>
 
                 <button
@@ -176,26 +244,48 @@
                 >
                     Close
                 </button>
+
             </div>
+
 
             <p class="text-muted">
                 Select a plan to record your membership purchase.
             </p>
 
+
             <form id="renewForm">
 
                 <div class="form-group">
-                    <label for="renewPlan">Membership Plan</label>
 
-                    <select id="renewPlan" name="renewPlan" required>
-                        <option value="">Loading plans...</option>
+                    <label for="renewPlan">
+                        Membership Plan
+                    </label>
+
+                    <select
+                        id="renewPlan"
+                        name="renewPlan"
+                        required
+                    >
+
+                        <option value="">
+                            Loading plans...
+                        </option>
+
                     </select>
+
                 </div>
+
 
                 <div class="form-group">
+
                     <label>Plan Price</label>
-                    <p id="renewPlanPrice">Select a plan to see its price.</p>
+
+                    <p id="renewPlanPrice">
+                        Select a plan to see its price.
+                    </p>
+
                 </div>
+
 
                 <button type="submit" class="btn-custom">
                     Confirm Plan
@@ -203,24 +293,33 @@
 
             </form>
 
-            <p id="renewMessage" class="form-message" aria-live="polite"></p>
+
+            <p
+                id="renewMessage"
+                class="form-message"
+                aria-live="polite"
+            ></p>
 
         </div>
 
     </div>
 
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="footer">
+
         <div class="container-custom">
+
             <p>
                 &copy; 2026 FitZone Gym. All rights reserved.
             </p>
+
         </div>
+
     </footer>
 
 
-    <!-- JavaScript: Load in this order -->
+    <!-- JAVASCRIPT -->
     <script src="js/storage.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/member.js"></script>
